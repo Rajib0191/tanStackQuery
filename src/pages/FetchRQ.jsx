@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useFetchPosts } from "../controller/useRqPostController";
 
 const FetchRQ = () => {
-  const { data, isPending, isError, error } = useFetchPosts();
+  const [pageNumber, setPageNumber] = useState(0);
+  const { data, isPending, isError, error } = useFetchPosts(pageNumber);
   // Conditional rendering based on loading, error, and posts data
   if (isPending) return <p>Loading...</p>;
   if (isError) return <p> Error: {error.message || "Something went wrong!"}</p>;
@@ -27,16 +28,16 @@ const FetchRQ = () => {
         })}
       </ul>
 
-      {/* <div className="pagination-section container">
+      <div className="pagination-section container">
         <button
           disabled={pageNumber === 0 ? true : false}
-          onClick={() => setPageNumber((prev) => prev - 3)}
+          onClick={() => setPageNumber((prev) => prev - 5)}
         >
           Prev
         </button>
-        <p>{pageNumber / 3 + 1}</p>
-        <button onClick={() => setPageNumber((prev) => prev + 3)}>Next</button>
-      </div> */}
+        <p>{Math.floor(pageNumber / 5 + 1)}</p>
+        <button onClick={() => setPageNumber((prev) => prev + 5)}>Next</button>
+      </div>
     </div>
   );
 };

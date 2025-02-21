@@ -164,5 +164,7 @@ a {
 .pagination-section {
   margin: auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 3.2rem;
 }

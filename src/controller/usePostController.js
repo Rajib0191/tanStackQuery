@@ -1,9 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-
-const instance = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
-});
+import { instance, POSTS } from "../route/api";
 
 export const fetchPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +8,7 @@ export const fetchPosts = () => {
 
   const fetchData = async () => {
     try {
-      const res = await instance.get("/posts");
+      const res = await instance.get(POSTS);
       if (res.data) {
         setPosts(res.data);
         setIsLoading(false);

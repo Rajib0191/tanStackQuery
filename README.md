@@ -1,6 +1,8 @@
 # Some important notes about tanStack Query
 
-# Keywords:
+# useQuery:
+
+is Used to fetch and cache data from the server(Read Operations).
 
 1. gcTime:1000(garbage collection)
    => Since there are no more active instances of this query, a garbage collection timeout is set using gcTime to delete and garbage collect the query (defaults to 5 minutes).
@@ -17,5 +19,28 @@
 5. refetchIntervalBackground:true
    => If we change the page or go to other page then that api is calling in the background.
 
-6. placeholderData:keepPreviousData,
+6. placeholderData:keepPreviousData
    => When page change it's not showing loading. Just change the data into the background.
+
+# useMutation:
+
+Used to modify or send data to the server(Create, Update or Delete operation).
+Syntax:
+const mutation = useMutation(mutationFunction,{
+//Optional configuration options.
+})
+
+1. mutation()
+   => The mutation() function is used to execute the mutation in React Query.
+   The Process is Same whether you're
+   Deleting Data.
+   Updating Data.
+   Creating Data.
+
+When you call mutation() function , it tells the React Query to run the mutation function defined inside the useMutation hook.
+
+# queryClient.setQueryData:
+
+const queryClient = useQueryClient();
+queryClient.setQueryData
+=> is used to update the cached data for a specific query.

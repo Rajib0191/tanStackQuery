@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useFetchPosts } from "../controller/useRqPostController";
 import { useDeletePost } from "../controller/useRqDeleteController";
+import { useUpdatePost } from "../controller/useRqUpdateController";
 
 const FetchRQ = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const { data, isPending, isError, error } = useFetchPosts(pageNumber);
 
   const deleteMutation = useDeletePost(pageNumber);
+  const updateMutation = useUpdatePost(pageNumber);
 
   // Conditional rendering based on loading, error, and posts data
   if (isPending) return <p>Loading...</p>;
@@ -26,7 +28,7 @@ const FetchRQ = () => {
                 <p>{body}</p>
               </NavLink>
               <button onClick={() => deleteMutation.mutate(id)}>Delete</button>
-              <button onClick={() => {}}>Update</button>
+              <button onClick={() => updateMutation.mutate(id)}>Update</button>
             </li>
           );
         })}

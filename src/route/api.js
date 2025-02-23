@@ -5,3 +5,5 @@ export const instance = axios.create({
 });
 
 export const POSTS = `/posts`;
+export const PHOTOS = `/photos`;
+export const USERS = `https://api.github.com/users`;

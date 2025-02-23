@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <p>copyright @ThapaTechnical</p>
+      <p>copyright @ Md. Azizul Islam Rajib</p>
     </footer>
   );
 };
